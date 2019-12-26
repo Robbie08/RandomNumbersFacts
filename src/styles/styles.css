@@ -1,0 +1,16 @@
+html {
+    
+    font-family: cursive;
+}
+
+h1{
+    font-size: 4rem;
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    margin: 5rem auto;
+}
+
+.card {
+    margin: 5rem 10rem;
+    font-size: 2rem;
+}
