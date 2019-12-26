@@ -4,14 +4,14 @@ import {Button} from 'react-bootstrap'
 import {Form} from 'react-bootstrap'
 import { render } from 'react-dom'
 
-const API = "http://numbersapi.com/"
+const API = "http://numbersapi.com/"  // API URL
 
 // this function will accept and object as prop to populate the card
 class Wall extends Component {
     state = {
-        number: "",
-        numberView: "",
-        fact:""
+        number: "random",
+        numberView: "random",
+        fact:"12 is the number of keys in any standard digital telephone (1 through 9, 0, * and #)."
     }
 
     // handle the user data from the form
@@ -23,18 +23,16 @@ class Wall extends Component {
         );  
     }
 
-    
-
     // handle the user data when the button is clicked
-    onFetchedState = async () => {
-        // concat number to api link
-        const URL = `${API}${this.state.number}`
-    
+    onFetchedState = async (e) => {
+        // Initialize the correct URL
+        // if the button has 
+        let URL = (e !== undefined) ? `${API}${this.state.number}` :  `${API}${"random"}`
+
         // use that for fetch
         try {
             const response = await fetch(URL);
             const text = await response.text()
-            console.log(text)
     
             // set state string for number fact
             this.setState({
@@ -47,6 +45,10 @@ class Wall extends Component {
             console.log(E); // output error
         }
     }
+    
+    async componentDidMount (){
+        this.onFetchedState(); // call the onFetchedState to update UI
+    }
 
     render(){
         return(
@@ -58,12 +60,11 @@ class Wall extends Component {
                     <Card.Text className="text-primary">{this.state.fact}</Card.Text>
                     <Form.Control onChange={this.getUserData} name="Number" size="text" type="text" placeholder="Enter a number to find out an intersting fact about it" />
                     <br/>
-                    <Button onClick={this.onFetchedState} variant="primary">Fetch Fact</Button>
+                    <Button onClick={this.onFetchedState} id="btnClicked" variant="primary">Fetch Fact</Button>
                 </Card.Body>
                 </Card>
             </div>
         )
-
     }
 
 }
