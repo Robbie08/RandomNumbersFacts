@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
-import { render } from 'react-dom'
 import Wall from './Wall'
-
-
-const title = "Random Number Facts"
 
 class Main extends Component {
     render() {
         return(
             <div>
-                <h1>{title}</h1>
+                <h1>Random Number Facts</h1>
                 <div>
-                    <Wall></Wall>
+                    <Wall/>
                 </div>
                 <footer>
                     <div>
@@ -22,9 +18,8 @@ class Main extends Component {
                     </div>
                 </footer>
             </div>
-        )
+        );
     }
-
 }
 
 export default Main
